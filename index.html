@@ -1,8 +1,20 @@
 <h2>Rectangle Creator</h2>
 <p>Count: <input id="count" value="5"></p>
+<button id="load">Load</button>
 <button id="create">Create</button>
 <button id="cancel">Cancel</button>
 <script>
+  document.getElementById("load").onclick = () => {
+    const pluginId = "1";
+    parent.postMessage(
+      {
+        pluginMessage: { type: "load" },
+        pluginId,
+      },
+      "https://www.figma.com",
+    );
+  };
+
   document.getElementById("create").onclick = () => {
     const textbox = document.getElementById("count");
     const count = parseInt(textbox.value, 10);

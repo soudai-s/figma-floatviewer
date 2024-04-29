@@ -13,6 +13,18 @@ figma.ui.onmessage = (msg: { type: string, count: number }) => {
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
+  if (msg.type === "load") {
+    const { width: viewportWidth, height: viewportheight } =
+      figma.viewport.bounds;
+    const width = Math.round(viewportWidth / 2);
+    const height = Math.round(viewportheight / 2);
+    const url = `https://www.figma.com/file/${figma.fileKey}/${figma.root.name}?type=design&mode=design`;
+    figma.ui.postMessage({ url, width, height });
+    figma.showUI(`<script>window.location.href = "${url}";</script>`, {
+      width,
+      height,
+    });
+  }
   if (msg.type === "cancel") {
     figma.closePlugin();
   }

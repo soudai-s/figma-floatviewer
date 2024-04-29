@@ -1,13 +1,14 @@
 {
   "name": "floatviewer",
-  "id": "",
+  "id": "1",
   "api": "1.0.0",
   "main": "main.js",
   "capabilities": [],
   "enableProposedApi": false,
+  "enablePrivatePluginApi": true,
   "editorType": ["figma"],
   "ui": "index.html",
   "networkAccess": {
-    "allowedDomains": ["none"]
+    "allowedDomains": ["https://www.figma.com/"]
   }
 }
