@@ -1,1 +1,16 @@
-{}
+{
+  "scripts": {
+    "dev:ui": "vite --mode ui",
+    "dev:api": "vite --mode api",
+    "build": "npm run build:ui && npm run build:api",
+    "build:ui": "vite build --mode ui",
+    "build:api": "vite build --mode api",
+    "preview:ui": "vite preview --mode ui",
+    "preview:api": "vite preview --mode api"
+  },
+  "devDependencies": {
+    "@scala-js/vite-plugin-scalajs": "^1.0.0",
+    "vite": "^5.2.10",
+    "vite-plugin-singlefile": "^2.0.1"
+  }
+}
