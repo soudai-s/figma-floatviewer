@@ -7,8 +7,20 @@ object API {
     println("Hello World! in API")
     Globals.figma.showUI(Globals.__html__)
     Globals.figma.ui.onmessage = { msg =>
-      close()
+      handleMessage(msg.`type`)
     }
+  }
+
+  def handleMessage(messageType: String): Unit = {
+    messageType match {
+      case "load" => load()
+      case "close" => close()
+    }
+  }
+
+  def load(): Unit = {
+    val url = s"https://www.figma.com/file/${Globals.figma.fileKey}/${Globals.figma.root.name}?type=design&mode=design"
+    Globals.figma.showUI(s"<script>window.location.href = \"${url}\";</script>")
   }
 
   def close(): Unit = {

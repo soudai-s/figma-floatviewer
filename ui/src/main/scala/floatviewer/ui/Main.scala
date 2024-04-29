@@ -10,6 +10,7 @@ object UI {
     dom.document.querySelector("#app").innerHTML = s"""
       <div>
         <h2>Float Viewer</h2>
+        <button id="load">Load</button>
         <button id="close">Close</button>
       </div>
     """
@@ -19,6 +20,14 @@ object UI {
         "pluginMessage" -> js.Dynamic.literal("type" -> "close")
       )
       FigmaWindow.postMessage(onCloseMessageValue, "*")
+    })
+    val loadDom = dom.document.getElementById("load")
+    loadDom.addEventListener("click", { (e: dom.Event) =>
+      val onLoadMessageValue = js.Dynamic.literal(
+        "pluginMessage" -> js.Dynamic.literal("type" -> "load"),
+        "pluginId" -> "1"
+      )
+      FigmaWindow.postMessage(onLoadMessageValue, "https://www.figma.com")
     })
   }
 }
